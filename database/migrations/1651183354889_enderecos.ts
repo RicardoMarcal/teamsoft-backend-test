@@ -6,7 +6,7 @@ export default class Enderecos extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.integer('id_do_cliente').unsigned().notNullable().references('id').inTable('clientes')
+      table.integer('cliente_id').unsigned().notNullable().references('clientes.id').onDelete('CASCADE')
       table.string('logradouro').notNullable()
       table.integer('numero').notNullable()
       table.string('complemento')

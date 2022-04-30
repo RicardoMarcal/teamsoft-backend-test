@@ -19,12 +19,9 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import Database from '@ioc:Adonis/Lucid/Database'
 
-Route.get('/clientes', async () => {
-  return Database.from('clientes').select('*')
-})
+Route.group(() => {
+  Route.resource('/clientes', 'ClientesController').apiOnly()
+  Route.resource('/clientes/:clienteId/enderecos', 'EnderecosController').apiOnly()
+}).prefix('/api')
 
-Route.get('/enderecos', async () => {
-  return Database.from('enderecos').select('*')
-})
