@@ -19,16 +19,16 @@
 
 - Estruturas json com tipos para ``post`` e ``put/patch``
   - Clientes:
-  ```
+  ```json
   {
-    "cnpj": BIGINT,
+    "cnpj": STRING, // Apenas números e exatamente 14 dígitos
     "razao_social": STRING,
     "nome_do_contato": STRING,
-    "telefone": BIGINT,
+    "telefone": STRING, // Apenas números e 10 dígitos ou mais
   }
   ```
   - Endereços:
-  ```
+  ```json
   {
     "logradouro": STRING,
     "numero": INTEGER,
@@ -36,6 +36,6 @@
     "bairro": STRING,
     "cidade": STRING,
     "estado": STRING,
-    "cep": BIGINT,
+    "cep": STRING, // Apenas números e exatamente 8 dígitos
   }
   ```

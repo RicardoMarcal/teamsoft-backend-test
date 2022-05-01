@@ -1,4 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import Cliente from 'App/Models/Cliente'
 import Endereco from 'App/Models/Endereco'
 
@@ -8,6 +9,18 @@ export default class EnderecosController {
     const clienteId = params.clienteId
 
     await Cliente.findOrFail(clienteId)
+
+    const enderecoSchema = schema.create({
+      logradouro: schema.string(),
+      numero: schema.number(),
+      complemento: schema.string(),
+      bairro: schema.string(),
+      cidade: schema.string(),
+      estado: schema.string(),
+      cep: schema.string([rules.minLength(8), rules.maxLength(8), rules.regex(/^[0-9]+$/)]),
+    })
+
+    await request.validate({schema: enderecoSchema})
 
     body.clienteId = clienteId
 

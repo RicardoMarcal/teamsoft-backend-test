@@ -1,9 +1,19 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import Cliente from 'App/Models/Cliente'
 
 export default class ClientesController {
   public async store ({request, response}: HttpContextContract){
     const body = request.body()
+
+    const clienteSchema = schema.create({
+      cnpj: schema.string([rules.minLength(14), rules.maxLength(14), rules.regex(/^[0-9]+$/)]),
+      razao_social: schema.string(),
+      nome_do_contato: schema.string(),
+      telefone: schema.string([rules.minLength(10), rules.regex(/^[0-9]+$/)]),
+    })
+
+    await request.validate({schema: clienteSchema})
 
     const cliente = await Cliente.create(body)
 

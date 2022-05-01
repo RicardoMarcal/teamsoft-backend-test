@@ -27,7 +27,7 @@ export default class Endereco extends BaseModel {
   public estado: string
 
   @column()
-  public cep: bigint
+  public cep: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

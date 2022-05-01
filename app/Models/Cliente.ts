@@ -10,7 +10,7 @@ export default class Cliente extends BaseModel {
   public id: number
 
   @column()
-  public cnpj: bigint
+  public cnpj: string
 
   @column()
   public razao_social: string
@@ -19,7 +19,7 @@ export default class Cliente extends BaseModel {
   public nome_do_contato: string
 
   @column()
-  public telefone: bigint
+  public telefone: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

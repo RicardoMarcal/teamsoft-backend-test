@@ -6,10 +6,10 @@ export default class Clientes extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.bigint('cnpj').notNullable()
+      table.string('cnpj').unique().notNullable()
       table.string('razao_social').notNullable()
       table.string('nome_do_contato').notNullable()
-      table.bigint('telefone').notNullable()
+      table.string('telefone').notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
