@@ -11,9 +11,9 @@
   - Digite ``node ace serve`` para rodar a API
 
 - Rotas:
-  - /api/clientes --> ``post`` ``get``
+  - /api/clientes --> ``get`` ``post``
   - /api/clientes/:id ---> ``get`` ``put/patch`` ``delete``
-  - /api/clientes/:id/endereco --> ``post`` ``get``
+  - /api/clientes/:id/endereco --> ``get`` ``post``
   - /api/clientes/:id/endereco/:id ---> ``get`` ``put/patch`` ``delete``
   - OBS: ao remover um cliente, todos os endereços ligados a ele serão removidos também.
 
