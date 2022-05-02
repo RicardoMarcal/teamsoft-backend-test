@@ -8,7 +8,7 @@
   - Vá no ``.env`` e coloque os devidos valores para as variáveis de ambiente ``MYSQL_PORT``, ``MYSQL_USER``, ``MYSQL_PASSWORD`` e ``MYSQL_DB_NAME``
   - Abra o terminal e acesse a pasta do projeto
   - Digite ``node ace migration:run`` no terminal e aperte enter para criar as tabelas no banco de dados
-  - Digite ``node ace serve --watch`` para rodar a API
+  - Digite ``node ace serve`` para rodar a API
 
 - Rotas:
   - /api/clientes --> ``post`` ``get``

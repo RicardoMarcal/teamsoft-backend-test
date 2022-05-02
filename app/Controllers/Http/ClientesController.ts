@@ -59,6 +59,15 @@ export default class ClientesController {
 
     const cliente = await Cliente.findOrFail(params.id)
 
+    const clienteSchema = schema.create({
+      cnpj: schema.string([rules.minLength(14), rules.maxLength(14), rules.regex(/^[0-9]+$/)]),
+      razao_social: schema.string(),
+      nome_do_contato: schema.string(),
+      telefone: schema.string([rules.minLength(10), rules.regex(/^[0-9]+$/)]),
+    })
+
+    await request.validate({schema: clienteSchema})
+
     cliente.cnpj = body.cnpj
     cliente.razao_social = body.razao_social
     cliente.nome_do_contato = body.nome_do_contato

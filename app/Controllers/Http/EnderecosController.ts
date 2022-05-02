@@ -66,6 +66,18 @@ export default class EnderecosController {
 
     const endereco = await Endereco.findOrFail(params.id)
 
+    const enderecoSchema = schema.create({
+      logradouro: schema.string(),
+      numero: schema.number(),
+      complemento: schema.string(),
+      bairro: schema.string(),
+      cidade: schema.string(),
+      estado: schema.string(),
+      cep: schema.string([rules.minLength(8), rules.maxLength(8), rules.regex(/^[0-9]+$/)]),
+    })
+
+    await request.validate({schema: enderecoSchema})
+
     endereco.logradouro = body.logradouro
     endereco.numero = body.numero
     endereco.complemento = body.complemento
