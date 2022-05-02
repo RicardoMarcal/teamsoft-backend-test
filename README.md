@@ -1,4 +1,4 @@
-## TeamSoft
+## TeamSoft Backend Test
 
 - Tecnologias usadas: NodeJS, Typescript, AdonisJS, LucidORM, MySQL e RESTful API
 
