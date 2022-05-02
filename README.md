@@ -19,7 +19,7 @@
 
 - Estruturas json com tipos para ``post`` e ``put/patch``
   - Clientes:
-  ```json
+  ```js
   {
     "cnpj": STRING, // Apenas números e exatamente 14 dígitos
     "razao_social": STRING,
@@ -28,7 +28,7 @@
   }
   ```
   - Endereços:
-  ```json
+  ```js
   {
     "logradouro": STRING,
     "numero": INTEGER,
