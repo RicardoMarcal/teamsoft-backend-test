@@ -32,7 +32,7 @@
   {
     "logradouro": STRING,
     "numero": INTEGER,
-    "complemento": STRING,
+    "complemento": STRING, // Opicional
     "bairro": STRING,
     "cidade": STRING,
     "estado": STRING,

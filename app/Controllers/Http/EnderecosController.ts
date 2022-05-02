@@ -13,7 +13,7 @@ export default class EnderecosController {
     const enderecoSchema = schema.create({
       logradouro: schema.string(),
       numero: schema.number(),
-      complemento: schema.string(),
+      complemento: schema.string.nullableAndOptional(),
       bairro: schema.string(),
       cidade: schema.string(),
       estado: schema.string(),
@@ -69,7 +69,7 @@ export default class EnderecosController {
     const enderecoSchema = schema.create({
       logradouro: schema.string(),
       numero: schema.number(),
-      complemento: schema.string(),
+      complemento: schema.string.nullableAndOptional(),
       bairro: schema.string(),
       cidade: schema.string(),
       estado: schema.string(),
