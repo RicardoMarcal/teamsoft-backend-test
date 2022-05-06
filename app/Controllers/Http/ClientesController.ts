@@ -7,13 +7,24 @@ export default class ClientesController {
     const body = request.body()
 
     const clienteSchema = schema.create({
-      cnpj: schema.string([rules.minLength(14), rules.maxLength(14), rules.regex(/^[0-9]+$/)]),
+      cnpj: schema.string([
+        rules.unique({table: 'clientes', column: 'cnpj'}),
+        rules.minLength(14),
+        rules.maxLength(14),
+        rules.regex(/^[0-9]+$/)
+      ]),
       razao_social: schema.string(),
       nome_do_contato: schema.string(),
       telefone: schema.string([rules.minLength(10), rules.regex(/^[0-9]+$/)]),
     })
 
-    await request.validate({schema: clienteSchema})
+    await request.validate({
+      schema: clienteSchema,
+      messages: {
+        'cnpj.unique': 'Esse CNPJ está em uso.',
+        regex: 'Você só pode digitar números.',
+      },
+    })
 
     const cliente = await Cliente.create(body)
 
@@ -60,13 +71,24 @@ export default class ClientesController {
     const cliente = await Cliente.findOrFail(params.id)
 
     const clienteSchema = schema.create({
-      cnpj: schema.string([rules.minLength(14), rules.maxLength(14), rules.regex(/^[0-9]+$/)]),
+      cnpj: schema.string([
+        rules.unique({table: 'clientes', column: 'cnpj'}),
+        rules.minLength(14),
+        rules.maxLength(14),
+        rules.regex(/^[0-9]+$/)
+      ]),
       razao_social: schema.string(),
       nome_do_contato: schema.string(),
       telefone: schema.string([rules.minLength(10), rules.regex(/^[0-9]+$/)]),
     })
 
-    await request.validate({schema: clienteSchema})
+    await request.validate({
+      schema: clienteSchema,
+      messages: {
+        'cnpj.unique': 'Esse CNPJ está em uso.',
+        regex: 'Você só pode digitar números.',
+      },
+    })
 
     cliente.cnpj = body.cnpj
     cliente.razao_social = body.razao_social
