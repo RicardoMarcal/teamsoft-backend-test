@@ -11,7 +11,7 @@ export default class ClientesController {
         rules.unique({table: 'clientes', column: 'cnpj'}),
         rules.minLength(14),
         rules.maxLength(14),
-        rules.regex(/^[0-9]+$/)
+        rules.regex(/^[0-9]+$/),
       ]),
       razao_social: schema.string(),
       nome_do_contato: schema.string(),
@@ -75,7 +75,7 @@ export default class ClientesController {
         rules.unique({table: 'clientes', column: 'cnpj'}),
         rules.minLength(14),
         rules.maxLength(14),
-        rules.regex(/^[0-9]+$/)
+        rules.regex(/^[0-9]+$/),
       ]),
       razao_social: schema.string(),
       nome_do_contato: schema.string(),

@@ -20,7 +20,12 @@ export default class EnderecosController {
       cep: schema.string([rules.minLength(8), rules.maxLength(8), rules.regex(/^[0-9]+$/)]),
     })
 
-    await request.validate({schema: enderecoSchema})
+    await request.validate({
+      schema: enderecoSchema,
+      messages: {
+        regex: 'Você só pode digitar números.',
+      },
+    })
 
     body.clienteId = clienteId
 
@@ -76,7 +81,12 @@ export default class EnderecosController {
       cep: schema.string([rules.minLength(8), rules.maxLength(8), rules.regex(/^[0-9]+$/)]),
     })
 
-    await request.validate({schema: enderecoSchema})
+    await request.validate({
+      schema: enderecoSchema,
+      messages: {
+        regex: 'Você só pode digitar números.',
+      },
+    })
 
     endereco.logradouro = body.logradouro
     endereco.numero = body.numero
